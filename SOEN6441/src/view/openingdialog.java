@@ -106,7 +106,7 @@ public class openingdialog {
 
 	public void tournament_mode() {
 		
-		new TournamentModeMenu(messageWindow);
+	;
 		
 	}
 
