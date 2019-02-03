@@ -1,4 +1,4 @@
-package controllers;
+package view;
 
 import static java.lang.System.exit;
 
@@ -11,71 +11,69 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import controllers.MessageWindow;
+import game.messages.MessageWindow;
 
-/* 
+/*
  * @author: Gursharan
  * for Tournament mode maximum 4 players can play
 */
 
 public class TournamentModeMenu extends JFrame {
-	 private MessageWindow messageWindow;
-	 private int w,h;
-	 public JLabel mapLabel1 = new JLabel("No Map Selected");
-	 public JLabel mapLabel2 = new JLabel("No Map Selected");
-	 public JLabel mapLabel3 = new JLabel("No Map Selected");
-	 public JLabel mapLabel4 = new JLabel("No Map Selected");
-	 public JLabel mapLabel5 = new JLabel("No Map Selected");
-	 public String map1fromFile="";
-	 public String map2fromFile="";
-	 public String map3fromFile="";
-	 public String map4fromFile="";
+         private MessageWindow messageWindow;
+         private int w,h;
+         public JLabel mapLabel1 = new JLabel("No Map Selected");
+         public JLabel mapLabel2 = new JLabel("No Map Selected");
+         public JLabel mapLabel3 = new JLabel("No Map Selected");
+         public JLabel mapLabel4 = new JLabel("No Map Selected");
+         public String map1fromFile="";
+         public String map2fromFile="";
+         public String map3fromFile="";
+         public String map4fromFile="";
 
-	 public String[] str1 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-	 public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-	 public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-	 public String[] str4 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-	 public JComboBox tournamentstr1 = new JComboBox(str1);
-	 public JComboBox tournamentstr2 = new JComboBox(str2);
-	 public JComboBox tournamentstr3 = new JComboBox(str3);
-	 public JComboBox tournamentstr4 = new JComboBox(str4);
-	 public Integer[] ListoftournamentGames = {1, 2, 3, 4};
-	 public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40};
-	 public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);
-	 public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
-	 public TournamentModeMenu(MessageWindow messageWindow) {
-	        super("Tournament Mode Game");
-	        this.messageWindow = messageWindow;
-	        this.w = 1300;
-	        this.h = 500;
-	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        setSize(this.w, this.h);
-	        setResizable(false);
-	        setAlwaysOnTop(false);
-	        this.setLayout(new GridBagLayout());
-	        GridBagConstraints grid_bag_cons = new GridBagConstraints();
-	        grid_bag_cons.insets = new Insets(10, 0, 10, 0);
-	        grid_bag_cons.gridx = 0;
-	        grid_bag_cons.gridy = 0;
-	        getContentPane().add(mapSelector(), grid_bag_cons);
-	        grid_bag_cons.gridx = 0;
-	        grid_bag_cons.gridy = 1;
-	        getContentPane().add(player_strategy_selector(), grid_bag_cons);
-	        grid_bag_cons.gridx = 0;
-	        grid_bag_cons.gridy = 2;
-	      getContentPane().add(numberSelector(), grid_bag_cons);
-	        grid_bag_cons.gridx = 0;
-	        grid_bag_cons.gridy = 3;
-	       getContentPane().add(initializeGame(), grid_bag_cons);
+         public String[] str1 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+         public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+         public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+         public String[] str4 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+         public JComboBox tournamentstr1 = new JComboBox(str1);
+         public JComboBox tournamentstr2 = new JComboBox(str2);
+         public JComboBox tournamentstr3 = new JComboBox(str3);
+         public JComboBox tournamentstr4 = new JComboBox(str4);
+         public Integer[] ListoftournamentGames = {1, 2, 3, 4};
+         public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40};
+         public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);
+         public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
+         public TournamentModeMenu(MessageWindow messageWindow) {
+                super("Tournament Mode Game");
+                this.messageWindow = messageWindow;
+                this.w = 1300;
+                this.h = 500;
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setSize(this.w, this.h);
+                setResizable(false);
+                setAlwaysOnTop(false);
+                this.setLayout(new GridBagLayout());
+                GridBagConstraints grid_bag_cons = new GridBagConstraints();
+                grid_bag_cons.insets = new Insets(10, 0, 10, 0);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 0;
+                getContentPane().add(mapSelector(), grid_bag_cons);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 1;
+                getContentPane().add(player_strategy_selector(), grid_bag_cons);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 2;
+              getContentPane().add(numberSelector(), grid_bag_cons);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 3;
+               getContentPane().add(initializeGame(), grid_bag_cons);
 
-//	         pack(); // ignore sizing
-	        setLocationRelativeTo(null);
-	        setVisible(true);
-	    }
+                setLocationRelativeTo(null);
+                setVisible(true);
+            }
 
-	/*
-	 * This methods allows selection of maps in tournament mode . At max 4 maps can be selected
-	 */
+        /*
+         * This methods allows selection of maps in tournament mode . At max 4 maps can be selected
+         */
 private JPanel mapSelector() {
     JPanel mapSelectionPanel = new JPanel();
     JPanel mapSelection = new JPanel();
@@ -83,7 +81,6 @@ private JPanel mapSelector() {
     TitledBorder title = BorderFactory.createTitledBorder("First map selection to make: Select here");
     mapSelectionPanel.setBorder(title);
 
-//    mapSelectionPanel.setPreferredSize(new Dimension(1100, 100));
     mapSelectionPanel.setLayout(new GridBagLayout());
     GridBagConstraints grid_bag_cons = new GridBagConstraints();
     grid_bag_cons.insets = new Insets(5, 15, 5, 15);
@@ -106,7 +103,7 @@ private JPanel mapSelector() {
     mapSelectionPanel.add(map4, grid_bag_cons);
     grid_bag_cons.gridx = 5;
     grid_bag_cons.gridy = 1;
-    
+
 
     //  Labels on mapSelectionPanel1
     grid_bag_cons.gridx = 1;
@@ -128,9 +125,9 @@ private JPanel mapSelector() {
 /*
  * This method returns player strategies and create separate panel for it
  */
-	private JPanel player_strategy_selector() {
-	JPanel strategy_selector_panel = new JPanel();
-	JPanel strategyButton= new JPanel();
+        private JPanel player_strategy_selector() {
+        JPanel strategy_selector_panel = new JPanel();
+        JPanel strategyButton= new JPanel();
 
     TitledBorder title = BorderFactory.createTitledBorder("Select strategies for each player.");
     strategy_selector_panel.setBorder(title);
@@ -172,11 +169,11 @@ private JPanel mapSelector() {
 
    strategyButton.add(strategy_selector_panel);
    return strategyButton;
-	}
-	/*
-	 * This method set settings like number of maps, number of games to play for each game in Tournament mode 
-	 */
-	private JPanel numberSelector() {
+        }
+        /*
+         * This method set settings like number of maps, number of games to play for each game in Tournament mode
+         */
+        private JPanel numberSelector() {
         JPanel numberSelectorPanel = new JPanel();
         JPanel numberSelectorButtons = new JPanel();
 
@@ -208,24 +205,24 @@ private JPanel mapSelector() {
 
         return numberSelectorButtons;
     }
-	 private JPanel initializeGame() {
-	        JPanel initializeGamePanel = new JPanel();
-	        JPanel initializeGameButtons = new JPanel();
+         private JPanel initializeGame() {
+                JPanel initializeGamePanel = new JPanel();
+                JPanel initializeGameButtons = new JPanel();
 
-	        TitledBorder title = BorderFactory.createTitledBorder("Start the game");
-	        initializeGamePanel.setBorder(title);
+                TitledBorder title = BorderFactory.createTitledBorder("Start the game");
+                initializeGamePanel.setBorder(title);
 
-	        initializeGamePanel.setLayout(new GridBagLayout());
-	        GridBagConstraints grid_bag_cons = new GridBagConstraints();
-	        grid_bag_cons.insets = new Insets(5, 15, 5, 15);
+                initializeGamePanel.setLayout(new GridBagLayout());
+                GridBagConstraints grid_bag_cons = new GridBagConstraints();
+                grid_bag_cons.insets = new Insets(5, 15, 5, 15);
 
-	        JButton start = new JButton("Start the game");
+                JButton start = new JButton("Start the game");
 
-	        grid_bag_cons.gridx = 0;
-	        grid_bag_cons.gridy = 0;
-	        initializeGamePanel.add(start,grid_bag_cons);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 0;
+                initializeGamePanel.add(start,grid_bag_cons);
 
-	        initializeGameButtons.add(initializeGamePanel);
-	        return initializeGameButtons;
-	 }
+                initializeGameButtons.add(initializeGamePanel);
+                return initializeGameButtons;
+         }
 }
