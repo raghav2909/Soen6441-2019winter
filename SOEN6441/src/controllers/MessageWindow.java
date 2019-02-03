@@ -32,10 +32,10 @@ public class MessageWindow extends JFrame {
         notification.setEditable(false);
         notification.setLineWrap(true);
         notification.setWrapStyleWord(true);
-        notification.setBackground(Color.DARK_GRAY);
+        notification.setBackground(Color.LIGHT_GRAY);
         notification.setForeground(Color.WHITE);
 
-        JScrollPane scroll = new JScrollPane (notification, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane scroll = new JScrollPane (notification, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         this.add(scroll);
         setLocationRelativeTo(null);

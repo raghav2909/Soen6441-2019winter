@@ -5,14 +5,13 @@ import static java.lang.System.exit;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import controllers.MessageWindow;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import controllers.MessageWindow;
 
 /* 
  * @author: Gursharan
@@ -27,6 +26,11 @@ public class TournamentModeMenu extends JFrame {
 	 public JLabel mapLabel3 = new JLabel("No Map Selected");
 	 public JLabel mapLabel4 = new JLabel("No Map Selected");
 	 public JLabel mapLabel5 = new JLabel("No Map Selected");
+	 public String map1fromFile="";
+	 public String map2fromFile="";
+	 public String map3fromFile="";
+	 public String map4fromFile="";
+
 	 public String[] str1 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
 	 public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
 	 public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
@@ -35,8 +39,8 @@ public class TournamentModeMenu extends JFrame {
 	 public JComboBox tournamentstr2 = new JComboBox(str2);
 	 public JComboBox tournamentstr3 = new JComboBox(str3);
 	 public JComboBox tournamentstr4 = new JComboBox(str4);
-	 public Integer[] ListoftournamentGames = {1, 2, 3, 4, 5};
-	 public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40, 45, 50};
+	 public Integer[] ListoftournamentGames = {1, 2, 3, 4};
+	 public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40};
 	 public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);
 	 public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
 	 public TournamentModeMenu(MessageWindow messageWindow) {
@@ -176,28 +180,28 @@ private JPanel mapSelector() {
         JPanel numberSelectorPanel = new JPanel();
         JPanel numberSelectorButtons = new JPanel();
 
-        TitledBorder title = BorderFactory.createTitledBorder("Set settings for Game: ");
+        TitledBorder title = BorderFactory.createTitledBorder("Set following settings for Game: ");
         numberSelectorPanel.setBorder(title);
 
         numberSelectorPanel.setLayout(new GridBagLayout());
         GridBagConstraints grid_bag_cons = new GridBagConstraints();
-       grid_bag_cons.insets = new Insets(5, 15, 5, 15);
+        grid_bag_cons.insets = new Insets(5, 15, 5, 15);
 
         GamesInTournament.setSelectedIndex(0);
         TurnsInTournament.setSelectedIndex(0);
 
 
-       grid_bag_cons.gridx = 1;
-       grid_bag_cons.gridy = 1;
+        grid_bag_cons.gridx = 1;
+        grid_bag_cons.gridy = 1;
         numberSelectorPanel.add(new JLabel("Enter Number of games to play on each map."),grid_bag_cons);
-       grid_bag_cons.gridx = 1;
-       grid_bag_cons.gridy = 2;
+        grid_bag_cons.gridx = 1;
+        grid_bag_cons.gridy = 2;
         numberSelectorPanel.add(GamesInTournament,grid_bag_cons);
-       grid_bag_cons.gridx = 2;
-       grid_bag_cons.gridy = 1;
+        grid_bag_cons.gridx = 2;
+        grid_bag_cons.gridy = 1;
         numberSelectorPanel.add(new JLabel("Maximum number of turns"),grid_bag_cons);
-       grid_bag_cons.gridx = 2;
-       grid_bag_cons.gridy = 2;
+        grid_bag_cons.gridx = 2;
+        grid_bag_cons.gridy = 2;
         numberSelectorPanel.add(TurnsInTournament,grid_bag_cons);
 
         numberSelectorButtons.add(numberSelectorPanel);
