@@ -1,5 +1,7 @@
 package view;
 
+
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +14,12 @@ import javax.swing.JOptionPane;
 
 import controllers.the_main_controller;
 import controllers.*;
+import controllers.TournamentModeMenu;
+import controllers.MessageWindow;
 
 public class openingdialog {
-	
+	 private  MessageWindow messageWindow = new MessageWindow();
+
 	JFrame first_frame;
 	JButton gameplay;
 	JButton mapedit;
@@ -96,6 +101,12 @@ public class openingdialog {
 				
 				
 		});
+		
+	}
+
+	public void tournament_mode() {
+		
+		new TournamentModeMenu(messageWindow);
 		
 	}
 
