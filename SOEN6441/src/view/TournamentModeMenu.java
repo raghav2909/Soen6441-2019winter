@@ -4,6 +4,7 @@ import static java.lang.System.exit;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,7 @@ public class TournamentModeMenu extends JFrame {
          public JLabel mapLabel2 = new JLabel("No Map Selected");
          public JLabel mapLabel3 = new JLabel("No Map Selected");
          public JLabel mapLabel4 = new JLabel("No Map Selected");
+         public JLabel player = new JLabel("Number of Players");
          public String map1fromFile="";
          public String map2fromFile="";
          public String map3fromFile="";
@@ -38,10 +40,12 @@ public class TournamentModeMenu extends JFrame {
          public JComboBox tournamentstr2 = new JComboBox(str1);
          public JComboBox tournamentstr3 = new JComboBox(str1);
          public JComboBox tournamentstr4 = new JComboBox(str1);
+         public JSpinner numberofplayers = new JSpinner(new SpinnerNumberModel(2, 2, 5, 1));
          public Integer[] ListoftournamentGames = {1, 2, 3, 4};
          public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40};
          public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);
          public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
+         
          public TournamentModeMenu(MessageWindow messageWindow) {
                 super("Tournament Mode Game");
                 this.messageWindow = messageWindow;
@@ -56,20 +60,47 @@ public class TournamentModeMenu extends JFrame {
                 grid_bag_cons.insets = new Insets(10, 0, 10, 0);
                 grid_bag_cons.gridx = 0;
                 grid_bag_cons.gridy = 0;
-                getContentPane().add(mapSelector(), grid_bag_cons);
+                getContentPane().add(playernumber(), grid_bag_cons);
                 grid_bag_cons.gridx = 0;
                 grid_bag_cons.gridy = 1;
-                getContentPane().add(player_strategy_selector(), grid_bag_cons);
+                getContentPane().add(mapSelector(), grid_bag_cons);
                 grid_bag_cons.gridx = 0;
                 grid_bag_cons.gridy = 2;
-              getContentPane().add(numberSelector(), grid_bag_cons);
+                getContentPane().add(player_strategy_selector(), grid_bag_cons);
                 grid_bag_cons.gridx = 0;
                 grid_bag_cons.gridy = 3;
+              getContentPane().add(numberSelector(), grid_bag_cons);
+                grid_bag_cons.gridx = 0;
+                grid_bag_cons.gridy = 4;
                getContentPane().add(initializeGame(), grid_bag_cons);
 
                 setLocationRelativeTo(null);
                 setVisible(true);
             }
+         
+         /*
+          * This method returns the panel to select number of players for game
+          */
+private JPanel playernumber() {
+	JPanel playernumberpanel = new JPanel();
+	
+	TitledBorder title = BorderFactory.createTitledBorder("Select Player count");
+	playernumberpanel.setBorder(title);
+	
+	playernumberpanel.setLayout(new GridBagLayout());
+	GridBagConstraints grid_bag = new GridBagConstraints();
+    grid_bag.insets = new Insets(5, 15, 5, 15);
+    
+    playernumberpanel.add(player, grid_bag);
+    grid_bag.gridx= 1;
+    grid_bag.gridy=0;
+    
+    playernumberpanel.add(numberofplayers,grid_bag);
+    grid_bag.gridx= 2;
+    grid_bag.gridy=0;
+	
+	return playernumberpanel;
+}
 
         /*
          * This methods allows selection of maps in tournament mode . At max 4 maps can be selected

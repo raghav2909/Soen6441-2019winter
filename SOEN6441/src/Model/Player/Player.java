@@ -2,6 +2,9 @@ package Model.Player;
 
 import java.util.ArrayList;
 
+import Model.NodeOfCountry;
+import Model.NodeOfMap;
+
 /**
  * This class is responsible to represent the player
  * @author samansoltani
@@ -24,11 +27,11 @@ public class Player
     /**
      * List of Continents owned by player
      */
-   // private ArrayList<NodeOfMap> PlayerContinents;
+    private ArrayList<NodeOfMap> PlayerContinents;
     /**
      * Number of Armies owned by player
      */
-    //private int PlayerArmies;
+    private int PlayerArmies;
     /**
      * List of Cards owned by player
      */
