@@ -57,6 +57,7 @@ public void gameplay()
 				else if(m=="m")
 				{
 				System.out.println("tournament mode opted");
+				opendialog.tournament_mode();
 				}
 
 			opendialog.returnframe().dispose();	
