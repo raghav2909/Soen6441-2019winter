@@ -16,7 +16,9 @@ public class the_main_controller {
 	private ActionListener editmap;
 	
 	private ActionListener playthegame;
-	
+
+	private ActionListener editthemaps;
+	private File_open_Controller foc;
 	openingdialog opendialog= new openingdialog();
 	public the_main_controller()
 	{
@@ -65,7 +67,6 @@ public void gameplay()
 	};
 	this.opendialog.Actiongameplay(playthegame);
 }
-
 
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");

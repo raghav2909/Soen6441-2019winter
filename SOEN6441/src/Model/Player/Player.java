@@ -143,7 +143,7 @@ public class Player
     public String[] getNameOfCountries()
     {
         String[] names = new String [this.PlayerCountries.size()];
-        for (int i=0; i<names.length,i++)
+        for (int i=0; i<names.length;i++)
         {
             names[i] = this.PlayerCountries.get(i).getCountryName();
             System.out.println(names[i]);
@@ -413,7 +413,7 @@ public class Player
         }
         else
         {
-            return.this.PlayerStrategy.PlaceArmy(getNameOfCountries(),getPlayerName());
+            return this.PlayerStrategy.PlaceArmy(getNameOfCountries(),getPlayerName());
         }
     }
 }

@@ -10,7 +10,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import controllers.the_main_controller;
 import controllers.*;
 import game.messages.MessageWindow;
 
@@ -21,6 +20,7 @@ public class openingdialog {
 	JFrame first_frame;
 	JButton gameplay;
 	JButton mapedit;
+	private Edit_Create_Map_Controller ecm;
 
 	/*
 	 * This method shows the frame to select the option 'play game' or 'edit map'
@@ -37,6 +37,21 @@ public class openingdialog {
 		first_frame.add(mapedit);
 //		freme.validate();
 		first_frame.setVisible(true);
+		
+		
+		/**map edit button action listener 
+		 * 
+		 */
+		mapedit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				 ecm.getInstance().tobegin();
+		System.out.println("hello1");}
+
+			
+	});
 	}
 	
 	/*
@@ -61,6 +76,7 @@ public class openingdialog {
 			return "m";
 		}
 //		return "single";
+	
 	}
 	
 	/*
@@ -79,6 +95,9 @@ public class openingdialog {
 		this.gameplay.addActionListener(action);
 	}
 
+	
+	
+	
 	/*
 	 * This method shows the frame to 'Load game' or 'New game' option
 	 * Sets action on each button
@@ -120,4 +139,8 @@ public class openingdialog {
 		
 	}
 
+	
+
 }
+
+

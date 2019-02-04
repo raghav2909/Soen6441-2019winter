@@ -36,6 +36,7 @@ public class File_open_Controller extends JFrame {
                                                     fc.getSelectedFile(),
                                                     "Open Map",
                                                     JOptionPane.OK_OPTION);
+                      
                       break;
 
                    case JFileChooser.CANCEL_OPTION:
