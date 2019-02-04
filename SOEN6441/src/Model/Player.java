@@ -1,4 +1,4 @@
-package Model.Player;
+package Model;
 
 import java.util.ArrayList;
 
@@ -24,89 +24,44 @@ public class Player
     /**
      * List of Continents owned by player
      */
-   // private ArrayList<NodeOfMap> PlayerContinents;
+    private ArrayList<NodeOfMap> PlayerContinents;
     /**
      * Number of Armies owned by player
      */
-    //private int PlayerArmies;
+    private int PlayerArmies;
     /**
      * List of Cards owned by player
-     */
+     */ 
     private ArrayList<Card> Cards;
-    /**
-     * Number of times player used cards exchange
-     */
-    private int PlayerCardsUsed;
-    /**
-     * Name of selected country for reinforcement
-     */
-    private String CountryReinSelect;
     /**
      * List of all continents
      */
     private ArrayList<NodeOfMap> AllContinents;
     /**
-     * Number of selected armies for reinforcement
-     */
-    private int ArmiesReinSelect;
-    /**
-     * Save selected country for fortification
-     */
-    private NodeOfCountry SelectCountry;
-    /**
-     * Save neighbours of selected country
-     */
-    private NodeOfCountry NeSelectedCountry;
-    /**
-     * Changeable strategy for player
-     */
-    private StrategyOfPlayer PlayerStrategy;
-    /**
-     * Determine player still in the game or not
-     */
-    private boolean PlayerLost = false;
-    /**
-     * Save GameDrive
-     */
-    private GameDrive driver;
-    /**
      * Set up Player with name
      * @param name Player Name
      */
-    public Player(String name,GameDriver pDriver)
+    public Player(String name)
     {
         this.PlayerName = name;
-        this.driver = pDriver;
         this.PlayerCountries = new ArrayList<NodeOfCountry>();
         this.PlayerContinents = new ArrayList<NodeOfMap>();
-        this.Cards = new ArrayList<cards>();
+        this.Cards = new ArrayList<Card>();
     }
     /**
      * Set up Player with name and armies
      * @param name Player Name
      * @param Narmies Player New Armies
+     * @param AllContitents List of all continents 
      */
-    public Player (String name, int Narmies, GameDriver pDriver)
+    public Player (String name, int Narmies,ArrayList<NodeOfMap> AllContinents)
     {
         this.PlayerName = name;
+        this.PlayerCountries = new ArrayList<NodeOfCountry>();
+        this.PlayerContinents = new ArrayList<NodeOfMap>();
+        this.Cards = new ArrayList<Card>();
         this.PlayerArmies = Narmies;
         this.AllContinents = new ArrayList<NodeOfMap>();
-    }
-    /**
-     * Set up Player with name and armies
-     * @param name Player Name
-     * @param Narmies Player New Armies
-     * @param ListOfCountries List of all counties owned by Player
-     */
-    public Player (String name, int Narmies,ArrayList<NodeOfCountry> ListOfCountries,GameDrive pDriver)
-    {
-        this(name , pDriver);
-        this.PlayerArmies = Narmies;
-        this.AllContinents = new ArrayList<NodeOfMap>();
-        for(NodeOfCountry c: ListOfCountries)
-        {
-            this.AddCountry(c);
-        }
     }
     /**
      * return Player Name
@@ -120,13 +75,9 @@ public class Player
      * Add Country to the Player Countries
      * @param Country Name of Country own by Player
      */
-    public void AddCountry (NodeOfCountry Country)
+    public  void AddCountry (NodeOfCountry Country)
     {
         this.PlayerCountries.add(Country);
-        if(Country.getOwner() != this)
-        {
-            Country.setOwner(this);
-        }
     }
     /**
      * Return List of Countries owned by PLayer
@@ -142,13 +93,13 @@ public class Player
      */
     public String[] getNameOfCountries()
     {
-        String[] names = new String [this.PlayerCountries.size()];
-        for (int i=0; i<names.length,i++)
+        String[] Names = new String [this.PlayerCountries.size()];
+        for (int i=0; i<Names.length;i++)
         {
-            names[i] = this.PlayerCountries.get(i).getCountryName();
-            System.out.println(names[i]);
+            Names[i] = this.PlayerCountries.get(i).getCountryName();
+            System.out.println(Names[i]);
         }
-        return names;
+        return Names;
     }
     /**
      * Shows Countries owned by Player with No Armies
@@ -159,7 +110,7 @@ public class Player
         ArrayList<String> names = new ArrayList<String>();
         for(NodeOfCountry c: this.PlayerCountries)
         {
-            if(c.getArmyCount()=0)
+            if(c.getArmyCount()==0)
                 names.add(c.getCountryName());
         }
         return names.toArray(new String[names.size()]);
@@ -212,10 +163,10 @@ public class Player
         for (NodeOfMap continent : this.AllContinents)
         {
             System.out.println(continent.getContinentName());
-            if(this.PlayerCountries.containAll(Continent.getContinentList()))
+            if(this.PlayerCountries.containAll(continent.getCountryList()))
             {
                 addContinent(continent);
-                System.out.println("Adde :" + continent.getContinentName());
+                System.out.println("Added :" + continent.getContinentName());
             }
         }
     }
@@ -308,113 +259,6 @@ public class Player
     {
     	this.PlayerArmies = NewArmy;
     }
-    /**
-     * Running the reinforcement phase
-     */
-    public void ReinforcmentPhase()
-    {
-    	PlayerStrategy.ReinforcementPhase(PlayerArmies,getNameOfCountries());
-    }
-    /**
-     * Running the attack phase
-     */
-    public void AttackPhase()
-    {
-    	ArrayList<String> ListOfCountries = new ArrayList<String>();
-    	for(NodeOfCountry C: this.PlayerCountries)
-    	{
-    		if (C.getCountArmies()>1)
-    		{
-    			for (NodeOfCountry M : C.getNeiCountries())
-    			{
-    				if(!M.getOwner().equals(this))
-    				{
-    					ListOfCountries.add(C.getCountryName());
-    					break;
-    				}
-    			}
-    		}
-    	}
-    	if (ListOfCountries.isEmpty()) 
-    	{
-    		driver.notifyObservers(driver.getTurnManager.getPhase());
-    		driver.ChangePhase();
-    	}
-    	else
-    	{
-    		PlayerStrategy.FortificationPhase(ListOfCountries);
-    	}	
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Set up New Strategy for Player
-     */
-    public void SetStrategy (StrategyOfPlayer Strategy)
-    {
-        this.PlayerStrategy = Strategy;
-    }
-    /**
-     * Checking if two PLayers are equal
-     */
-    public boolean Equals (Object p)
-    {
-        if (p instanceof Player)
-        {
-            if(((Player) p).getPlayerName().equals(this.getPlayerName()))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    /**
-     * Move Armies
-     * @param pArmies
-     * @param MaxArmies
-     * @param Message
-     * @return
-     */
-    public int MoveArmies(int pArmies,int MaxArmies, String Message)
-    {
-        return this.PlayerStrategy.MoveArmies(pArmies,MaxArmies,Message);
-    }
-    public String PlacementOfArmies()
-    {
-        if (getEmptyCountriesName().length !=0)
-        {
-            return this.PlayerStrategy.PlaceArmy(getEmptyCountriesName(),getPlayerName());
-        }
-        else
-        {
-            return.this.PlayerStrategy.PlaceArmy(getNameOfCountries(),getPlayerName());
-        }
-    }
 }
+
 
