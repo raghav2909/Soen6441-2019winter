@@ -14,6 +14,7 @@ import controllers.the_main_controller;
 import controllers.*;
 import game.messages.MessageWindow;
 
+
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();
 
@@ -23,7 +24,6 @@ public class openingdialog {
 
 	/*
 	 * This method shows the frame to select the option 'play game' or 'edit map'
-	 * 
 	 */
 	public void chooseplayoredit()
 	{
@@ -60,8 +60,6 @@ public class openingdialog {
 			fr.dispose();
 			return "m";
 		}
-		
-		
 //		return "single";
 	}
 	
@@ -112,12 +110,8 @@ public class openingdialog {
 			f2.dispose();
 			the_main_controller.getInstance().single_Mode_Saved_Start();
 			File_open_Controller foc= new File_open_Controller();
-			
 			}
-				
-				
 		});
-		
 	}
 
 	public void tournament_mode() {
