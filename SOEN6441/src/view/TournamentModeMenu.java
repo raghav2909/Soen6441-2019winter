@@ -31,13 +31,13 @@ public class TournamentModeMenu extends JFrame {
          public String map4fromFile="";
 
          public String[] str1 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-         public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-         public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-         public String[] str4 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+//         public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+//         public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
+//         public String[] str4 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
          public JComboBox tournamentstr1 = new JComboBox(str1);
-         public JComboBox tournamentstr2 = new JComboBox(str2);
-         public JComboBox tournamentstr3 = new JComboBox(str3);
-         public JComboBox tournamentstr4 = new JComboBox(str4);
+         public JComboBox tournamentstr2 = new JComboBox(str1);
+         public JComboBox tournamentstr3 = new JComboBox(str1);
+         public JComboBox tournamentstr4 = new JComboBox(str1);
          public Integer[] ListoftournamentGames = {1, 2, 3, 4};
          public Integer[] ListoftournamentTurns = {10, 15, 20, 25, 30, 35, 40};
          public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);

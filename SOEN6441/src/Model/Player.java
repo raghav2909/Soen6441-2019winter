@@ -162,11 +162,11 @@ public class Player
     {
         for (NodeOfMap continent : this.AllContinents)
         {
-            System.out.println(continent.getContinentName());
-            if(this.PlayerCountries.containAll(continent.getCountryList()))
+            System.out.println(continent.getContinent());
+            if(this.PlayerCountries.contains(continent.getCountries()))
             {
-                addContinent(continent);
-                System.out.println("Added :" + continent.getContinentName());
+                AddContinent(continent);
+                System.out.println("Added :" + continent.getContinent());
             }
         }
     }

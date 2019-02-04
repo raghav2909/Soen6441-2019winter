@@ -14,6 +14,7 @@ import controllers.the_main_controller;
 import controllers.*;
 import game.messages.MessageWindow;
 
+
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();
 
@@ -21,6 +22,9 @@ public class openingdialog {
 	JButton gameplay;
 	JButton mapedit;
 
+	/*
+	 * This method shows the frame to select the option 'play game' or 'edit map'
+	 */
 	public void chooseplayoredit()
 	{
 		first_frame = new JFrame("Select an option");
@@ -35,6 +39,9 @@ public class openingdialog {
 		first_frame.setVisible(true);
 	}
 	
+	/*
+	 * This method returns the mode of the game selected by the player either 'single' or 'tournament'
+	 */
 	public String decideMode()
 	{
 		JFrame fr= new JFrame("Choose Mode of the Game");
@@ -53,19 +60,29 @@ public class openingdialog {
 			fr.dispose();
 			return "m";
 		}
-		
-		
 //		return "single";
 	}
+	
+	/*
+	 * This method returns the initial frame 
+	 */
 	public JFrame returnframe()
 	{
 		return this.first_frame;
 	}
+	
+	/*
+	 * Sets the action for Play Game button
+	 */
 	public void Actiongameplay(ActionListener action)
 	{
 		this.gameplay.addActionListener(action);
 	}
 
+	/*
+	 * This method shows the frame to 'Load game' or 'New game' option
+	 * Sets action on each button
+	 */
 	public void games_option() {
 		JFrame f2 = new JFrame();
 		f2.setLayout(new BoxLayout(f2.getContentPane(),BoxLayout.Y_AXIS));
@@ -93,12 +110,8 @@ public class openingdialog {
 			f2.dispose();
 			the_main_controller.getInstance().single_Mode_Saved_Start();
 			File_open_Controller foc= new File_open_Controller();
-			
 			}
-				
-				
 		});
-		
 	}
 
 	public void tournament_mode() {
