@@ -20,7 +20,7 @@ public class openingdialog {
 	JFrame first_frame;
 	JButton gameplay;
 	JButton mapedit;
-	private Edit_Create_Map_Controller ecm;
+	private Edit_create_Map_Controller ecm;
 
 	/*
 	 * This method shows the frame to select the option 'play game' or 'edit map'
