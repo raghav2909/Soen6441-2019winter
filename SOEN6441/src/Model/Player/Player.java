@@ -247,12 +247,12 @@ public class Player
         return CountArmies;
     }
     /**
-     * Addd armies to player
+     * Add armies to player
      * @param count added armies
      */
     public void AddedArmies(int count)
     {
-        this.CountArmies += count;
+        this.PlayerArmies += count;
     }
     /**
      * Remove armies to player
@@ -260,7 +260,7 @@ public class Player
      */
     public void RemovedArmies(int count)
     {
-        this.CountArmies -= count;
+        this.PlayerArmies -= count;
     }
     /**
      * Number of Player armies
@@ -268,7 +268,7 @@ public class Player
      */
     public int getCountArmies()
     {
-       return this.CountArmies();
+       return this.PlayerArmies;
     }
     /**
      * Node of country by country name
@@ -299,6 +299,51 @@ public class Player
     public boolean getTurn()
     {
         return this.PlayerTurn;
+    }
+    /**
+     * set the new value of PLayer armies
+     * @param NewArmies number of armies
+     */
+    public void ArmySet(int NewArmy)
+    {
+    	this.PlayerArmies = NewArmy;
+    }
+    /**
+     * Running the reinforcement phase
+     */
+    public void ReinforcmentPhase()
+    {
+    	PlayerStrategy.ReinforcementPhase(PlayerArmies,getNameOfCountries());
+    }
+    /**
+     * Running the attack phase
+     */
+    public void AttackPhase()
+    {
+    	ArrayList<String> ListOfCountries = new ArrayList<String>();
+    	for(NodeOfCountry C: this.PlayerCountries)
+    	{
+    		if (C.getCountArmies()>1)
+    		{
+    			for (NodeOfCountry M : C.getNeiCountries())
+    			{
+    				if(!M.getOwner().equals(this))
+    				{
+    					ListOfCountries.add(C.getCountryName());
+    					break;
+    				}
+    			}
+    		}
+    	}
+    	if (ListOfCountries.isEmpty()) 
+    	{
+    		driver.notifyObservers(driver.getTurnManager.getPhase());
+    		driver.ChangePhase();
+    	}
+    	else
+    	{
+    		PlayerStrategy.FortificationPhase(ListOfCountries);
+    	}	
     }
 
 
