@@ -23,7 +23,12 @@ public class Edit_create_Map_Controller {
 	public void tobegin()
 	{
 		createnewmap();
+		editexistingmap();
 		System.out.println("hey coming in edit or create");
+		
+	}
+	private void editexistingmap() {
+		// TODO Auto-generated method stub
 		
 	}
 	private void createnewmap() {

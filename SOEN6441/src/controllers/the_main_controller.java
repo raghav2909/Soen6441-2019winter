@@ -72,6 +72,7 @@ public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 
 	File_open_Controller foc= new File_open_Controller();
+	String Map=foc.MapInfo("map");
 	// TODO Auto-generated method stub
 	
 }
