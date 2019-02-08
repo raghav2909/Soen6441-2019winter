@@ -70,15 +70,12 @@ public void gameplay()
 
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
-	String Map=foc.MapInfo("map");
-	String image = foc.MapInfo("bmp");
-	// TODO Auto-generated method stub
-	
+	File_open_Controller foc= new File_open_Controller("map");
 }
 public void single_Mode_Saved_Start() {
 
 	System.out.println("Coming here saved mode");
 	// TODO Auto-generated method stub
-	File_open_Controller foc= new File_open_Controller();
+	//File_open_Controller foc= new File_open_Controller();
 }
 }
