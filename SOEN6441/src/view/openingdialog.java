@@ -128,7 +128,7 @@ public class openingdialog {
 				{
 			f2.dispose();
 			the_main_controller.getInstance().single_Mode_Saved_Start();
-			File_open_Controller foc= new File_open_Controller();
+			//File_open_Controller foc= new File_open_Controller();
 			}
 		});
 	}
