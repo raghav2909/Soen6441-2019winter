@@ -3,6 +3,18 @@ package Model;
  * @author YashNarra
  * version 1.0
  */
-public class ArmyCount {
+public enum ArmyCount {
+	
+	InitalData{
+		public int getarmycount(int a) {
+			int ac=0;
+			switch(a) {
+			
+			
+			}
+			return ac;
+		}
+	};
+	public abstract int getarmycount(int a);
 
 }
