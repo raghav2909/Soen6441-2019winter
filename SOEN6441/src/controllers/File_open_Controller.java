@@ -73,5 +73,6 @@ setVisible(true);
 	 public void maplocation()
    {
  	  String map_Location= mapRead;
+ 	  System.out.println(map_Location);
    }
 }
