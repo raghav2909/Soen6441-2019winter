@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import view.Map_Frame;
+
 /**
  * This class handles the map data and also map editor.
  * @author samansoltani
@@ -10,6 +12,29 @@ import java.util.Observable;
  */
 public class Map extends Observable
 {
+	/**
+	 * reference of NodeOfMap object
+	 */
+	NodeOfMap MapNode;
+	private String NewFileMap;
+	private String OldFileMap;
+	
+	/**
+	 * Array list containing of all information about map
+	 */
+	ArrayList <NodeOfMap> continents = new ArrayList<NodeOfMap>();
+	
+	/**
+	 * writing the map contents to map file
+	 */
+	WriteMap MapWriter = new WriteMap();
+	
+	/**
+	 * new controller object
+	 */
+	
+	
+	
 	/**
 	 * creating a arraylist for saving map data
 	 */
@@ -22,8 +47,8 @@ public class Map extends Observable
 	  */
 	public Map(String FileName) 
 	{
-		//ReadMap Reader = new ReadMap();
-		//MapData = Reader.readMap(FileName);
+		ReadMap Reader = new ReadMap();
+		MapData = Reader.readMap(FileName);
 	}
 	
 	/**
@@ -189,5 +214,104 @@ public class Map extends Observable
 		}
 		return true;
 	}
+	
+	
+	public void WritingOldMap(ArrayList<NodeOfMap> continents) {
+		this.continents = continents;
+	}
+	
+	public boolean CheckContinentExist(String c) {
+		boolean ContinentExist = false;
+		for (NodeOfMap n : continents) {
+			if (n.getContinent().compareTo(c)==0) {
+				ContinentExist = true;
+			}
+		}
+		return ContinentExist;
+	}
+	
+	
+	public void AddContinents(String c1,ArrayList<NodeOfCountry> CountryArray,int v1) {
+		continents.add(new NodeOfMap(c1,CountryArray,v1));
+	}
+	
+	
+	
+	public ArrayList<NodeOfMap> getContinents(){
+		return continents;
+	}
+	
+	
+	public boolean CheckSaveMap() {
+		boolean SaveMap = true;
+		for (NodeOfMap n: continents) {
+			if (n.getCountries().size() == 0) {
+				SaveMap = false;
+			}
+			for(NodeOfCountry c : n.getCountries()) {
+				if(c.getNeighboursCountries().length ==0) {
+					SaveMap = false;
+				}
+			}
+		}
+		return SaveMap;
+	}
+	
+	
+	
+	
+	public void SaveMapFile() {
+		MapWriter.writeMap(continents);
+		NewFileMap = MapWriter.getMapFilePath();
+	}
+	
+	
+	public void SaveToOldFile(String p) {
+		MapWriter.writeMapExisting(continents,p);
+		OldFileMap = MapWriter.getMapFilePath();
+	}
+	
+	
+	
+	public String newFileMap() {
+		return NewFileMap;
+	}
+	
+	public String oldFileMap() {
+		return OldFileMap;
+	}
+	
+	
+	public String getFinalMap() {
+		if (Map_Frame.selectedAction().compareTo("new")==0) {
+			System.out.println(newFileMap());
+			return newFileMap();
+		}
+		else if (Map_Frame.selectedAction().compareTo("existing")==0) {
+			System.out.println(oldFileMap());
+			return oldFileMap();
+		}
+		return null;
+	}
+	
+	
+	
+	public String getOlfFileMap() {
+		return OldFileMap;
+	}
+	
+	
+	public boolean CheckCountryExist(String c) {
+		boolean ce = false;
+		for (NodeOfMap n : continents) {
+			for (NodeOfCountry i : n.getCountries()) {
+				if(i.getCountryName().compareTo(c)==0) {
+					ce = true;
+				}
+			}
+		}
+		return ce;
+	}
 }
+
 
