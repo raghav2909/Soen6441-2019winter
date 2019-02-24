@@ -1,5 +1,6 @@
 package controllers;
 
+import view.Map_Frame;
 
 /**
  * Edit_Create_Map_Controller performs action  for 
@@ -10,7 +11,7 @@ package controllers;
  */
 public class Edit_create_Map_Controller {
 	/**
-	 * object of MapFileChooser class used for calling the class methods 
+	 * object of Edit_Create_Map_Controller class used for calling the class methods 
 	 */
 	private static Edit_create_Map_Controller ecm ;
 
@@ -25,6 +26,7 @@ public class Edit_create_Map_Controller {
 	}
 	public void tobegin()
 	{
+		Map_Frame newMapFrame = new Map_Frame();
 		createnewmap();
 		editexistingmap();
 		System.out.println("hey coming in edit or create");
