@@ -80,6 +80,19 @@ public class NodeOfCountry
 		return this.Neighbours;
 	}
 	
+	
+	/**
+	 * give a list of neighbours country
+	 * @return Array of countries
+	 */
+	public NodeOfCountry[] getNeighboursCountries() 
+	{
+		if(this.Neighbours != null) 
+	    return this.Neighbours.toArray(new NodeOfCountry[this.Neighbours.size()]);
+		return null;
+	}
+	
+	
 	/**
 	 * Save a list of neighbour countries of a country
 	 * @return Array of neighbour countries
