@@ -71,6 +71,8 @@ public void gameplay()
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	File_open_Controller foc= new File_open_Controller("map");
+	String Map_loacation = foc.map_location();
+	System.out.println(Map_loacation);
 }
 public void single_Mode_Saved_Start() {
 

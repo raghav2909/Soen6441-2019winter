@@ -1,5 +1,12 @@
 package controllers;
 import java.awt.EventQueue;
+/**
+ * File_Open_Controller  performs action  for 
+ * for loading the map file on the system and 
+ * loading the similar "bmp" file on the front end 
+ * @see the_main_Controller
+ * @author Raghav_Sharda
+ */
 import java.awt.GridLayout;
 
 import java.awt.event.ActionEvent;
@@ -17,8 +24,10 @@ public class File_open_Controller extends JFrame {
 		   JFileChooser fc = new JFileChooser("Map Selection");
 
 	
-public String mapRead= null;
-	public  File_open_Controller( String newExtension) {
+public  String mapRead= null;
+
+
+public   File_open_Controller( String newExtension) {
 
 	      setDefaultCloseOperation(EXIT_ON_CLOSE);
 	      JPanel pnl = new JPanel();
@@ -27,7 +36,10 @@ public String mapRead= null;
 	      pnl.setLayout(new GridLayout(2, 1));
 	      JButton btn = new JButton("Open Maps");
 	      ActionListener al;
-	      al = new ActionListener()
+	      fc.setCurrentDirectory(new File("./Map_Data/map"));
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
+			fc.setFileFilter(filter);
+	      al = new ActionListener()		  
         {
            @Override
            public void actionPerformed(ActionEvent ae)
@@ -43,8 +55,11 @@ public String mapRead= null;
 			
 			if(mapRead.substring(mapRead.lastIndexOf("."),mapRead.length()).equalsIgnoreCase("."+newExtension)){
 				mapRead=mapRead;
+
+				
 				}
-			//System.out.println(mapRead);
+			
+			System.out.println(mapRead);
 		break;
 
                  case JFileChooser.CANCEL_OPTION:
@@ -63,16 +78,19 @@ public String mapRead= null;
         btn.addActionListener(al);
         pnl.add(btn);
 
-//System.out.println("comning here 2");
+System.out.println("comning here 2");
 setContentPane(pnl);
 
 pack();
 setVisible(true);
 		
 	}
-	 public void maplocation()
-   {
- 	  String map_Location= mapRead;
- 	  System.out.println(map_Location);
-   }
+
+public String map_location() {
+	File_open_Controller foc= new File_open_Controller("map");
+
+	return mapRead;
 }
+
+}
+	

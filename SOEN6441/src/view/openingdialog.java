@@ -3,12 +3,14 @@ package view;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.*;
 import game.messages.MessageWindow;
@@ -21,6 +23,7 @@ public class openingdialog {
 	JButton gameplay;
 	JButton mapedit;
 	private Edit_create_Map_Controller ecm;
+	private String mapRead1= null;
 
 	/*
 	 * This method shows the frame to select the option 'play game' or 'edit map'
@@ -132,7 +135,7 @@ public class openingdialog {
 			}
 		});
 	}
-
+	
 	public void tournament_mode() {
 		
 		new TournamentModeMenu(messageWindow);
