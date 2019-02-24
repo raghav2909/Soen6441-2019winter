@@ -7,6 +7,4 @@ import java.util.ArrayList;
  * @author YashNarra
  * version 1.0
  */
-public class ReadMap {
 
-}
