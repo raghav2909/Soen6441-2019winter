@@ -9,6 +9,9 @@ package controllers;
  * @author Haramanpreet
  */
 public class Edit_create_Map_Controller {
+	/**
+	 * object of MapFileChooser class used for calling the class methods 
+	 */
 	private static Edit_create_Map_Controller ecm ;
 
 	public Edit_create_Map_Controller() {
