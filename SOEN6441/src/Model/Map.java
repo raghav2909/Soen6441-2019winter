@@ -10,7 +10,7 @@ import view.Map_Frame;
  * @author samansoltani
  *@version 1.0
  */
-public class Map extends Observable
+public class Map 
 {
 	/**
 	 * reference of NodeOfMap object

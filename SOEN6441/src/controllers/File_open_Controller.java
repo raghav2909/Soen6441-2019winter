@@ -1,5 +1,6 @@
 package controllers;
 import java.awt.EventQueue;
+
 /**
  * File_Open_Controller  performs action  for 
  * for loading the map file on the system and 
@@ -20,13 +21,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import view.GameConsole;
+
 public class File_open_Controller extends JFrame {
 		   JFileChooser fc = new JFileChooser("Map Selection");
-
+GameConsole gmc;
 	
 public  String mapRead= null;
 
-
+/**
+ * This constructor gives user the option to select the map file when they go for play game option.
+ * The same constructor will be used when the user wants to open a saved game.
+ * @param newExtension It will take the extension type of the file that the user wants
+ * to open.
+ */
 public   File_open_Controller( String newExtension) {
 
 	      setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -56,7 +64,6 @@ public   File_open_Controller( String newExtension) {
 			if(mapRead.substring(mapRead.lastIndexOf("."),mapRead.length()).equalsIgnoreCase("."+newExtension)){
 				mapRead=mapRead;
 
-				
 				}
 			
 			System.out.println(mapRead);

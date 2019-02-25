@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
+import view.GameConsole;
 import view.openingdialog;
 /**
  * maincr variable stores reference of class MainController
@@ -14,7 +15,7 @@ public class the_main_controller {
 	private static the_main_controller maincr ;
 	
 	private ActionListener editmap;
-	
+	GameConsole gmc;
 	private ActionListener playthegame;
 
 	private ActionListener editthemaps;
@@ -73,6 +74,7 @@ public void Single_Mode_Start() {
 	File_open_Controller foc= new File_open_Controller("map");
 	String Map_loacation = foc.map_location();
 	System.out.println(Map_loacation);
+	//gmc.starts();
 }
 public void single_Mode_Saved_Start() {
 
