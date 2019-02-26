@@ -55,7 +55,7 @@ public class Map extends Observable
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist
 	 */
-	public ArrayList<NodeOfMap> GetMapData()
+	public  ArrayList<NodeOfMap> GetMapData()
 	{
 		return this.MapData;
 	}
