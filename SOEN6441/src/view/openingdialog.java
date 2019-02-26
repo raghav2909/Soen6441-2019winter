@@ -25,7 +25,7 @@ public class openingdialog {
 	private Edit_create_Map_Controller ecm;
 	private String mapRead1= null;
 
-	/*
+	/**
 	 * This method shows the frame to select the option 'play game' or 'edit map'
 	 */
 	public void chooseplayoredit()
@@ -34,7 +34,6 @@ public class openingdialog {
 		gameplay = new JButton("Play Game");
 		mapedit = new JButton("Edit Map");
 		first_frame.setSize(150, 150);
-//		freme.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		first_frame.setLayout(new FlowLayout());
 		first_frame.add(gameplay);
 		first_frame.add(mapedit);
@@ -42,7 +41,8 @@ public class openingdialog {
 		first_frame.setVisible(true);
 		
 		
-		/**map edit button action listener 
+		/**
+		 * map edit button action listener 
 		 * 
 		 */
 		mapedit.addActionListener(new ActionListener() {
@@ -57,7 +57,7 @@ public class openingdialog {
 	});
 	}
 	
-	/*
+	/**
 	 * This method returns the mode of the game selected by the player either 'single' or 'tournament'
 	 */
 	public String decideMode()
@@ -82,7 +82,7 @@ public class openingdialog {
 	
 	}
 	
-	/*
+	/**
 	 * This method returns the initial frame 
 	 */
 	public JFrame returnframe()
@@ -90,7 +90,7 @@ public class openingdialog {
 		return this.first_frame;
 	}
 	
-	/*
+	/**
 	 * Sets the action for Play Game button
 	 */
 	public void Actiongameplay(ActionListener action)
@@ -101,7 +101,7 @@ public class openingdialog {
 	
 	
 	
-	/*
+	/**
 	 * This method shows the frame to 'Load game' or 'New game' option
 	 * Sets action on each button
 	 */
