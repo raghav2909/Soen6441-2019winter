@@ -41,7 +41,7 @@ public class NodeOfMap {
 	}
 	
 	/**method to return array of countries in a continent
-	 * @return clsit array of countries
+	 * @return A list array of countries
 	 */
 	
 	public NodeOfCountry[] getCountryList() {
